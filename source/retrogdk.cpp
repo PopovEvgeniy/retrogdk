@@ -30,7 +30,7 @@ SVGALib homepage: http://www.svgalib.org/
 const int SOUND_CHANNELS=2;
 const unsigned char GAMEPAD_PRESS=1;
 const unsigned char GAMEPAD_RELEASE=0;
-const size_t BUTTON_AMOUNT=14;
+const size_t BUTTON_AMOUNT=16;
 
 namespace OSS_BACKEND
 {
