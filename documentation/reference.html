@@ -49,11 +49,11 @@
           <li><a href="#mozTocId414110">Chapter 2. Timer</a></li>
         </ul>
       </li>
-      <li><a href="#mozTocId290097"> Part 5. Binary files</a>
+      <li><a href="#mozTocId290097">Part 5. Binary files</a>
         <ul>
-          <li><a href="#mozTocId799699"> Chapter 1. Base binary files subsystem</a></li>
-          <li><a href="#mozTocId352348"> Chapter 2. File reader</a></li>
-          <li><a href="#mozTocId582047"> Chapter 3. File writer</a></li>
+          <li><a href="#mozTocId799699">Chapter 1. Base binary files subsystem</a></li>
+          <li><a href="#mozTocId352348">Chapter 2. File reader</a></li>
+          <li><a href="#mozTocId582047">Chapter 3. File writer</a></li>
         </ul>
       </li>
       <li><a href="#mozTocId308337">Part 6. Other important things</a>
@@ -63,7 +63,8 @@
           <li><a href="#mozTocId54966">Chapter 3. Abnormal program termination</a></li>
           <li><a href="#mozTocId338492">Chapter 4. Interaction with operation
               system</a></li>
-          <li><a href="#mozTocId73461">Chapter 5. Input</a></li>
+          <li><a href="#mozTocId90585">Chapter 5. Filesystem</a></li>
+          <li><a href="#mozTocId73461">Chapter 6. Input</a></li>
         </ul>
       </li>
       <li><a href="#mozTocId412631">Part 7. Sound</a>
@@ -948,7 +949,7 @@
       You may need interaction with operation system. Just use <span style="font-style: italic;">System</span>
       class for do it. Let’s look to public methods.<br>
       <br>
-      <span style="font-style: italic;">const unsigned long int
+      <span style="font-style: italic;">unsigned long int
         System::get_random(const unsigned long int number);</span> – Return a
       random number from zero to argument–1.<br>
       <span style="font-style: italic;">void System::quit();</span> – Exit from
@@ -957,16 +958,24 @@
       – Execute shell command or external program.<br>
       <span style="font-style: italic;">char* System::read_environment(const
         char *variable);</span> – Return value of specific system environment
-      variable.<br>
-      <span style="font-style: italic;">bool System::file_exist(const char
-        *name);</span> – Return true if the file is existed.<br>
-      <span style="font-style: italic;">bool System::delete_file(const char
-        *name);</span> – Delete the target file. Return true if operation was
-      successfully complete.<br>
+      variable.<span style="font-style: italic;"></span><br>
       <span style="font-style: italic;">void System::enable_logging(const char
         *name);</span> – Enable error logging. Error messages will redirect to a
-      log file. </big>
-    <h2><a class="mozTocH2" name="mozTocId73461"></a><big>Chapter 5. Input</big></h2>
+      log file.<br>
+    </big>
+    <h2><a id="mozTocId90585" class="mozTocH2"></a><big>Chapter 5. Filesystem</big></h2>
+    <big><br>
+      Filesystem subsystem let you doing some file operation. <span style="font-style: italic;">Filesystem</span>
+      class provide simple access to this subsystem. Let’s look to public
+      methods.<br>
+      <br>
+      <span style="font-style: italic;">void Filesystem::file_exist(const char
+        *name);</span> – Check the target file for exist.<br>
+      <span style="font-style: italic;">void Filesystem::delete_file(const char
+        *name);</span> – Delete the target file.<br>
+      <span style="font-style: italic;">bool Filesystem::get_status() const;</span>
+      – Return false if last file operation was failed. </big>
+    <h2><a class="mozTocH2" name="mozTocId73461"></a><big>Chapter 6. Input</big></h2>
     <big><br>
       <span style="text-decoration: underline;">A few words about built-in
         game-pad</span><br>
@@ -1353,6 +1362,7 @@ sound
     <big>0.2.5 – Source code was synced with Neon game development kit 5.0.9.</big><br>
     <big>0.2.6 – Source code was synced with Neon game development kit 5.1.</big><br>
     <big>0.2.7 – Source code was synced with Neon game development kit 5.1.1.</big><br>
-    <big>0.2.8 – Source code was synced with Neon game development kit 5.1.2.</big>
+    <big>0.2.8 – Source code was synced with Neon game development kit 5.1.2.</big><br>
+    <big>0.2.9 – Source code was synced with Neon game development kit 5.1.4.</big>
   </body>
 </html>
