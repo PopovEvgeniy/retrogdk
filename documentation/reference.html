@@ -35,7 +35,7 @@
           <li><a href="#mozTocId436473">Chapter 3. Base graphics subsystem</a></li>
           <li><a href="#mozTocId857731">Chapter 4. Graphic primitives</a></li>
           <li><a href="#mozTocId881761">Chapter 5. Base image subsystem</a></li>
-          <li><a href="#mozTocId889327">Chapter 6. Advanced image subsystem</a></li>
+          <li><a href="#mozTocId889327">Chapter 6. Animation subsystem</a></li>
           <li><a href="#mozTocId678026">Chapter 7. Background</a></li>
           <li><a href="#mozTocId104290">Chapter 8. Sprites</a></li>
           <li><a href="#mozTocId443325">Chapter 9. Tile-set</a></li>
@@ -49,11 +49,11 @@
           <li><a href="#mozTocId414110">Chapter 2. Timer</a></li>
         </ul>
       </li>
-      <li><a href="#mozTocId290097">Part 5. Binary files</a>
+      <li><a href="#mozTocId290097"> Part 5. Binary files</a>
         <ul>
-          <li><a href="#mozTocId799699">Chapter 1. Base binary files subsystem</a></li>
-          <li><a href="#mozTocId352348">Chapter 2. File reader</a></li>
-          <li><a href="#mozTocId582047">Chapter 3. File writer</a></li>
+          <li><a href="#mozTocId799699"> Chapter 1. Base binary files subsystem</a></li>
+          <li><a href="#mozTocId352348"> Chapter 2. File reader</a></li>
+          <li><a href="#mozTocId582047"> Chapter 3. File writer</a></li>
         </ul>
       </li>
       <li><a href="#mozTocId308337">Part 6. Other important things</a>
@@ -63,7 +63,7 @@
           <li><a href="#mozTocId54966">Chapter 3. Abnormal program termination</a></li>
           <li><a href="#mozTocId338492">Chapter 4. Interaction with operation
               system</a></li>
-          <li><a href="#mozTocId90585">Chapter 5. Filesystem</a></li>
+          <li><a href="#mozTocId806184">Chapter 5. Filesystem</a></li>
           <li><a href="#mozTocId73461">Chapter 6. Input</a></li>
         </ul>
       </li>
@@ -389,7 +389,10 @@
         *Screen);</span> – Initialize the subsystem.<br>
       <span style="font-style: italic;">IMG_Pixel *Surface::get_image();</span>
       – Return handle to image buffer.<br>
-      <span style="font-style: italic;">size_t Surface::get_length() const;</span>
+    </big><big><span style="font-style: italic;">void Surface::load_image(Image
+        &amp;buffer);</span> – Load an image from memory buffer. Replace current
+      image if exist.</big><br>
+    <big> <span style="font-style: italic;">size_t Surface::get_length() const;</span>
       – Return length of image buffer in bytes.<br>
       <span style="font-style: italic;">unsigned long int
         Surface::get_image_width() const;</span> – Return image width in pixels.<br>
@@ -403,32 +406,26 @@
         MIRROR_TYPE kind);</span> – Do mirror the current image.</big><br>
     <big><i>void Surface::horizontal_mirror();</i> – Do horizontal image mirror.</big><br>
     <big><i>void Surface::vertical_mirror();</i> – Do vertical image mirror.</big>
-    <h2><a class="mozTocH2" name="mozTocId889327"></a><big>Chapter 6. Advanced
-        image subsystem</big></h2>
+    <h2><a class="mozTocH2" name="mozTocId889327"></a><big>Chapter 6. Animation
+        subsystem</big></h2>
     <big><br>
       <span style="text-decoration: underline;">Very important subsystems</span><br>
       <br>
-      Advanced image subsystem is extended version of base image subsystem.
-      Background and sprite subsystems working over advanced image subsystem.<br>
+      Animation subsystem let you control animation frames.<br>
       <br>
-      <span style="text-decoration: underline;">Work with advanced graphics</span><br>
+      <span style="text-decoration: underline;">Work with animation subsystem</span><br>
       <br>
-      <span style="font-style: italic;">Canvas</span> class provide simple
-      access to advanced image subsystem. It is derived from Surface class.
-      Don’t use it directly. Let’s look to public methods.<br>
+      <span style="font-style: italic;">Animation</span> class provide simple
+      access to animation subsystem. Don’t use it directly. Let’s look to public
+      methods.<br>
       <br>
-      <span style="font-style: italic;">void Canvas::set_frames(const unsigned
-        long int amount);</span> – Set amounts of frames in scrolling background
-      or animated sprite.<br>
-      <span style="font-style: italic;">unsigned long int Canvas::get_frames()
-        const;</span> – Return amount of frames in scrolling background or
-      animated sprite.<br>
-      <span style="font-style: italic;">unsigned long int Canvas::get_frame()
-        const;</span> – Return current frame in scrolling background or animated
-      sprite.<br>
-      <span style="font-style: italic;">void Canvas::load_image(Image
-        &amp;buffer);</span> – Load an image from memory buffer. Replace current
-      image if exist. </big>
+      <span style="font-style: italic;">void Animation::set_frames(const
+        unsigned long int amount);</span> – Set amounts of frames.<br>
+      <span style="font-style: italic;">unsigned long int
+        Animation::get_frames() const;</span> – Return amount of frames.<br>
+      <span style="font-style: italic;">unsigned long int Animation::get_frame()
+        const;</span> – Return current frame.<span style="font-style: italic;"><br>
+      </span> </big>
     <h2><a class="mozTocH2" name="mozTocId678026"></a><big>Chapter 7. Background</big></h2>
     <big><br>
       <span style="text-decoration: underline;">Level decoration</span><br>
@@ -473,8 +470,9 @@
       <span style="text-decoration: underline;">Work with background</span><br>
       <br>
       Just use <span style="font-style: italic;">Background</span> class for
-      work with background. It is derived from Canvas. Let’s look to public
-      methods.<br>
+      work with background. It is derived from <span style="font-style: italic;">Surface</span>
+      and <span style="font-style: italic;">Animation</span> classes. Let’s
+      look to public methods.<br>
       <br>
       <span style="font-style: italic;">unsigned long int
         Background::get_width() const;</span> – Return background width in
@@ -555,7 +553,9 @@
       <span style="text-decoration: underline;">Work with sprites</span><br>
       <br>
       Just use <span style="font-style: italic;">Sprite</span> class for work
-      with a sprite. It is derived from Canvas. Let’s look to public methods.<br>
+      with a sprite. It is derived from <span style="font-style: italic;">Surface</span>
+      and <span style="font-style: italic;">Animation</span> classes. Let’s
+      look to public methods.<br>
       <br>
       <span style="font-style: italic;">void Sprite::load_sprite(Image
         &amp;buffer,const SPRITE_TYPE kind,const unsigned long int frames);</span>
@@ -787,10 +787,10 @@
       <br>
       <span style="font-style: italic;">struct Collision_Box</span><br style="font-style: italic;">
       <span style="font-style: italic;">{</span><br style="font-style: italic;">
-      <span style="font-style: italic;">unsigned long int x:32;</span><br style="font-style: italic;">
-      <span style="font-style: italic;">unsigned long int y:32;</span><br style="font-style: italic;">
-      <span style="font-style: italic;">unsigned long int width:32;</span><br style="font-style: italic;">
-      <span style="font-style: italic;">unsigned long int height:32;</span><br style="font-style: italic;">
+      <span style="font-style: italic;">unsigned long int x;</span><br style="font-style: italic;">
+      <span style="font-style: italic;">unsigned long int y;</span><br style="font-style: italic;">
+      <span style="font-style: italic;">unsigned long int width;</span><br style="font-style: italic;">
+      <span style="font-style: italic;">unsigned long int height;</span><br style="font-style: italic;">
       <span style="font-style: italic;">};</span><br>
       <br style="text-decoration: underline;">
       <span style="text-decoration: underline;">Work with collision detector</span><br>
@@ -830,9 +830,8 @@
       <span style="font-style: italic;">Timer</span> is very useful thing. Just
       use Timer class for work with the timer. Let’s look to public methods.<br>
       <br>
-      <span style="font-style: italic;">void Timer::set_timer(const unsigned
-        long int seconds);</span> – Set timer interval and initialize start
-      point.<br>
+      <span style="font-style: italic;">void Timer::set_timer(const double
+        seconds);</span> – Set timer interval and initialize start point.<br>
       <span style="font-style: italic;">bool Timer::check_timer();</span> –
       Initialize stop point. Return true and reinitialize start point if
       interval between stop and start points large or equal than specific
@@ -937,10 +936,10 @@
         program termination</big></h2>
     <big><br>
       You can use <span style="font-style: italic;">Halt</span> function for
-      terminate program. This function declared in <span style="font-style: italic;">GOPHERGDK</span>
+      terminate program. This function declared in <span style="font-style: italic;">RETROGDK</span>
       name-space.<br>
       <br>
-      <span style="font-style: italic;">void GOPHERGDK::Halt(const char
+      <span style="font-style: italic;">void RETROGDK::Halt(const char
         *message);</span> – Terminate the program. Write error message to log
       file if logging enabled. </big>
     <h2><a class="mozTocH2" name="mozTocId338492"></a><big>Chapter 4.
@@ -963,18 +962,22 @@
         *name);</span> – Enable error logging. Error messages will redirect to a
       log file.<br>
     </big>
-    <h2><a id="mozTocId90585" class="mozTocH2"></a><big>Chapter 5. Filesystem</big></h2>
+    <h2><a class="mozTocH2" name="mozTocId806184"></a><a id="mozTocId90585" class="mozTocH2"></a><big>Chapter
+        5. Filesystem</big></h2>
     <big><br>
       Filesystem subsystem let you doing some file operation. <span style="font-style: italic;">Filesystem</span>
       class provide simple access to this subsystem. Let’s look to public
       methods.<br>
       <br>
-      <span style="font-style: italic;">void Filesystem::file_exist(const char
+      <span style="font-style: italic;">bool Filesystem::file_exist(const char
         *name);</span> – Check the target file for exist.<br>
-      <span style="font-style: italic;">void Filesystem::delete_file(const char
+      <span style="font-style: italic;">bool Filesystem::delete_file(const char
         *name);</span> – Delete the target file.<br>
-      <span style="font-style: italic;">bool Filesystem::get_status() const;</span>
-      – Return false if last file operation was failed. </big>
+      <br>
+      <span style="text-decoration: underline;">Important remark</span><br>
+      <br>
+      All methods return false if operation was failed.<br>
+      <span style="font-style: italic;"></span> </big>
     <h2><a class="mozTocH2" name="mozTocId73461"></a><big>Chapter 6. Input</big></h2>
     <big><br>
       <span style="text-decoration: underline;">A few words about built-in
@@ -1386,6 +1389,8 @@ sound
     <big>0.4.9 – Source code was synced with Neon game development kit 5.4.1.</big><br>
     <big>0.5 – Source code was synced with Neon game development kit 5.4.2.</big><br>
     <big>0.5.1 – Source code was synced with Neon game development kit 5.4.3.</big><br>
-    <big>0.5.2 – Source code was synced with Neon game development kit 5.4.4.</big>
+    <big>0.5.2 – Source code was synced with Neon game development kit 5.4.4.<br>
+      0.5.3 – Source code was synced with Dingux game development kit 5.1.5.<br>
+    </big>
   </body>
 </html>
