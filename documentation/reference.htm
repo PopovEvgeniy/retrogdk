@@ -1,0 +1,1109 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1251">
+  <title>Programmer Reference</title>
+ </head>
+ <body>
+  <div align="center"><big>Retro Game Development Kit: Programmer Reference</big><br>
+  </div>
+  <big><br>
+  </big>
+  <ol id="mozToc"><!--mozToc h1 1 h2 2 h3 3 h4 4 h5 5 h6 6-->
+<li><a href="#mozTocId806513">Part 1. Welcome to Retro Game Development Kit</a>
+<ol>
+<li><a href="#mozTocId521721">Chapter 1. Introduction</a></li>
+<li><a href="#mozTocId20367">Chapter 2. A special thanks</a></li>
+<li><a href="#mozTocId913703">Chapter 3. SDK</a></li>
+<li><a href="#mozTocId596866">Chapter 4. Compilation</a></li>
+<li><a href="#mozTocId767679">Chapter 5. The library namespace</a></li>
+<li><a href="#mozTocId368955">Chapter 7. License</a></li></ol></li>
+<li><a href="#mozTocId578548">Part 2. The basic things</a>
+<ol>
+<li><a href="#mozTocId543814">Chapter 1. The coordinate system</a></li>
+<li><a href="#mozTocId445484">Chapter 2. A game loop</a></li></ol></li>
+<li><a href="#mozTocId814475">Part 3. Graphics</a>
+<ol>
+<li><a href="#mozTocId985454">Chapter 1. The virtual surface</a></li>
+<li><a href="#mozTocId18995">Chapter 2. The plane</a></li>
+<li><a href="#mozTocId697709">Chapter 3. The base graphics subsystem</a></li>
+<li><a href="#mozTocId70925">Chapter 4. The graphic primitives</a></li>
+<li><a href="#mozTocId237580">Chapter 5. The base image subsystem</a></li>
+<li><a href="#mozTocId74732">Chapter 6. The animation subsystem</a></li>
+<li><a href="#mozTocId234538">Chapter 7. The ordinary background</a></li>
+<li><a href="#mozTocId106872">Chapter 8. The ordinary sprites</a></li>
+<li><a href="#mozTocId934706">Chapter 9. Tileset</a></li>
+<li><a href="#mozTocId786607">Chapter 10. Text</a></li>
+<li><a href="#mozTocId473265">Chapter 11. Loading an image</a></li></ol></li>
+<li><a href="#mozTocId928237">Part 4. The game-specific things</a>
+<ol>
+<li><a href="#mozTocId150502">Chapter 1. The collision detector</a></li>
+<li><a href="#mozTocId495684">Chapter 2. Timer</a></li></ol></li>
+<li><a href="#mozTocId906226">Part 5. The binary files</a>
+<ol>
+<li><a href="#mozTocId235389">Chapter 1. The base binary files subsystem</a></li>
+<li><a href="#mozTocId753527">Chapter 2. The file reader</a></li>
+<li><a href="#mozTocId734420">Chapter 3. The file writer</a></li></ol></li>
+<li><a href="#mozTocId986637">Part 6. The other important things</a>
+<ol>
+<li><a href="#mozTocId991571">Chapter 1. Memory</a></li>
+<li><a href="#mozTocId982523">Chapter 2. The display backlight</a></li>
+<li><a href="#mozTocId197692">Chapter 3. Abnormal program termination</a></li>
+<li><a href="#mozTocId965356">Chapter 4. Interaction with the operating system</a></li>
+<li><a href="#mozTocId592544">Chapter 5. Filesystem</a></li>
+<li><a href="#mozTocId928685">Chapter 6. Input</a></li></ol></li>
+<li><a href="#mozTocId860328">Part 7. Sound</a>
+<ol>
+<li><a href="#mozTocId185441">Chapter 1. The low-level sound subsystem</a></li>
+<li><a href="#mozTocId716176">Chapter 2. Loading audio</a></li>
+<li><a href="#mozTocId941328">Chapter 3. Playing audio</a></li>
+<li><a href="#mozTocId594237">Chapter 4. Mixer</a></li></ol></li>
+<li><a href="#mozTocId993140">Part 8. The internal details of the library subsystems</a>
+<ol>
+<li><a href="#mozTocId459922">Chapter 1. A few words for curious programmers</a></li>
+<li><a href="#mozTocId442950">Chapter 2. The internal classes</a></li>
+<li><a href="#mozTocId910300">Chapter 3. The low-level sound subsystem</a></li>
+<li><a href="#mozTocId891074">Chapter 4. The base graphics subsystem</a></li>
+<li><a href="#mozTocId402185">Chapter 5. The input subsystem</a></li>
+<li><a href="#mozTocId672321">Chapter 6. The base image subsystem</a></li></ol></li>
+<li><a href="#mozTocId415691">Changelog</a></li></ol>
+  <big><br>
+  </big>
+  <h1><a id="mozTocId806513" class="mozTocH1"></a><big>Part 1. Welcome to Retro Game Development Kit</big></h1>
+  <h2><a id="mozTocId521721" class="mozTocH2"></a><big>Chapter 1. Introduction</big></h2>
+  <big><u>Introduction.</u><br>
+   <br><a href="http://www.retrofw.com">RetroFW</a> is a popular firmware for the different portable game consoles. It is a Linux-based operating system. I like Linux, but I don’t like the <a href="https://www.libsdl.org">SDL</a> library. I made my own library. I hope that my C++ library will be useful for many programmers.<br>
+   <br>
+   <u>Supported devices.</u><br>
+   <br>RetroFW was also ported to a few other devices. My library can work with it. You can see a list of supported devices below.<br>
+  </big>
+  <ul>
+   <li><big>RS-97</big></li>
+   <li><big>RS-97 Plus<br></big></li>
+   <li><big>RG-300</big></li>
+   <li><big>Retro Arcade Mini</big></li>
+   <li><big>LDK<br></big></li>
+   <li><a href="https://4pda.to/forum/index.php?showtopic=876115&amp;st=460#entry101342631"><big>Gopher 2</big></a></li>
+  </ul>
+  <big>
+  <br>
+   <u>Features.</u><br>
+   <br>
+   Let me show the library's features. Let’s go.<br>
+  </big>
+  <ul>
+   <li><big>Open-source code.</big></li>
+   <li><big>Easy-to-use object-oriented design.</big></li>
+   <li><big>This library can be easily ported to another portable Linux device.</big></li>
+   <li><big>Very fast.</big></li>
+   <li><big>zlib license.</big></li>
+   <li><big>The minimum number of external dependencies: only the standard run-time library and <a href="https://en.wikipedia.org/wiki/POSIX_Threads">POSIX Threads</a>.</big></li>
+  </ul>
+  <big><u><br>Installation.</u><br>
+   <br>
+   Follow these steps:<br>
+   <br>
+  </big>
+  <ul>
+   <li><big>Copy these files to your project directory: <i>retrogdk.h</i>, <i>retrogdk.cpp</i>, and <i>makefile.</i></big></li>
+   <li><big>Add this directive to your source code: <i>#include “retrogdk.h”</i></big></li>
+   <li><big>Edit the makefile.</big></li>
+  </ul>
+  <big>
+  </big>
+  <h2><a id="mozTocId20367" class="mozTocH2"></a><big>Chapter 2. A special thanks</big></h2>
+  <big>What do you need when you try to create a big thing? A technical
+   consultation. I need it too. I want to say «Big thanks for the
+   technical consultation» to these people:<br>
+   <br>
+  </big>
+  <ul>
+   <li><a href="https://github.com/dmitrysmagin"><big>Dmitry Smagin</big></a></li>
+   <li><a href="https://bsg.org.ua/"><big>Pavel Samko</big></a></li>
+   <li><a href="https://www.almost-university.com/home/volodya-mozhenkov"><big>Vladimir Mozhenkov</big></a></li>
+   <li><a href="https://vk.com/strong666"><big>Vitaliy Molochkov</big></a></li>
+   <li><a href="https://vk.com/pereulok"><big>Alexander Pereulok</big></a></li>
+   <li><big>DDMZ</big></li>
+  </ul>
+  <big><br>
+   Also, thanks to the PVS-Studio team for the <a href="https://www.viva64.com/en/b/0614/">free license</a>.</big><big><br>
+  </big>
+  <h2><a id="mozTocId913703" class="mozTocH2"></a><big>Chapter 3. SDK</big></h2>
+  <big>You need the <a href="https://github.com/retrofw/buildroot/releases">official RetroFW SDK</a> for compiling this library and the demos.<br>
+  </big>
+  <h2><a id="mozTocId596866" class="mozTocH2"></a><big>Chapter 4. Compilation</big></h2>
+  <big>Disable all compiler optimization. It needs to work correctly. See the
+   GCC documentation for more information about the compiler optimization.<br>
+  </big>
+  <h2><a id="mozTocId767679" class="mozTocH2"></a><big>Chapter 5. The library namespace</big></h2>
+  <big>All library classes are declared in the <i>RETROGDK</i> namespace.<br>
+  </big>
+  <h2><a id="mozTocId368955" class="mozTocH2"></a><big>Chapter 7. License</big></h2>
+  <big><u>The Retro Game Development Kit license</u><br>
+   <br>
+   Copyright (C) 2021 Popov Evgeniy Alekseyevich<br>
+   <br>
+   This software is provided 'as-is', without any express or implied
+   warranty. In no event will the authors be held liable for any damages
+   arising from the use of this software. Permission is granted to anyone
+   to use this software for any purpose, including commercial
+   applications, and to alter it and redistribute it freely, subject to
+   the following restrictions:<br>
+   <br>
+   1. The origin of this software must not be misrepresented; you must not<br>
+   claim that you wrote the original software. If you use this software<br>
+   in a product, an acknowledgment in the product documentation would be<br>
+   appreciated but is not required.<br>
+   2. Altered source versions must be plainly marked as such, and must not be<br>
+   misrepresented as being the original software.<br>
+   3. This notice may not be removed or altered from any source distribution.<br>
+   <br>
+   <u>The third-party code license</u><br>
+   <br>
+   The pixel packing algorithm is based on the code from the <a href="https://www.svgalib.org">SVGALib</a>. It is public domain.<br>
+  </big>
+  <h1><a id="mozTocId578548" class="mozTocH1"></a><big>Part 2. The basic things</big></h1>
+  <h2><a id="mozTocId543814" class="mozTocH2"></a><big>Chapter 1. The coordinate system</big></h2>
+  <big><br>
+   The Dingux Game Development Kit uses the standard screen coordinate
+   system. The coordinates start at the top-left corner of the screen.
+   Look at this picture to understand it.<br>
+   <br>
+   <img alt="" src="coordinate_system.png" height="111" width="107"><br>
+  </big>
+  <h2><a id="mozTocId445484" class="mozTocH2"></a><big>Chapter 2. A game loop</big></h2>
+  <big>What is the main point in your game? A game loop. You can see the structure of a typical game loop below.<br>
+   <br>
+   <img alt="" src="game_loop.png" height="316" width="357"><br>
+   <br>
+  </big>
+  <h1><a id="mozTocId814475" class="mozTocH1"></a><big>Part 3. Graphics</big></h1>
+  <h2><a id="mozTocId985454" class="mozTocH2"></a><big>Chapter 1. The virtual surface</big></h2>
+  <big><u>Introduce the virtual surface.</u><br>
+   <br>
+   Computer graphics is cool. A screen can show you many amazing things.
+   But all amazing things contain pixels. The virtual surface lets you
+   draw the pixels.<br>
+   <br>
+   <u>The frame resolution.</u><br>
+   <br>
+   The frame in the virtual surface has a fixed resolution. It equals the screen resolution by default.<br>
+   <u><br>Work with the virtual surface.</u><br>
+   <br>
+   The <i>Frame</i> class provides simple access to the virtual surface. Don’t use it directly. Let’s look at the public methods.<br>
+   <br>
+   <i>unsigned short int* Frame::get_buffer();</i> - Return the handle to the surface buffer.<br>
+   <br>
+   <i>size_t Frame::get_pixels() const;</i> - Return the number of pixels in the buffer.<br>
+   <br>
+   <i>void Frame::clear_screen();</i> - Clear the surface. Fill it with the black color.<br>
+   <br>
+   <i>bool Frame::draw_pixel(const unsigned long int x, const unsigned long int y, const unsigned short int red, const unsigned short int
+    green, const unsigned short int blue);</i> - Draw a pixel to the surface. Return false if failed.<br>
+   <br>
+   <i>unsigned long int Frame::get_frame_width() const;</i> - Return the frame width in pixels.<br>
+   <br>
+   <i>unsigned long int Frame::get_frame_height() const;</i> - Return the frame height in pixels.<br>
+   <br>
+   <i>void Frame::save();</i> - Save the surface content to the shadow buffer.<br>
+   <br>
+   <i>void Frame::restore();</i> - Restore the surface content from the shadow buffer.<br>
+   <br>
+   <i>void Frame::restore(const unsigned long int x, const unsigned long int y, const unsigned long int width, const unsigned long int height);</i> - Copy a piece of the shadow buffer to the surface.<br>
+  </big>
+  <h2><a id="mozTocId18995" class="mozTocH2"></a><big>Chapter 2. The plane</big></h2>
+   <big><u>A few words about a plane.</u><br>
+   <br>
+   The plane is a surface with a custom-defined size. An image from a plane will scale when transferred to the virtual surface.<br>
+   <br>
+   <u>Work with the plane.</u><br>
+   <br>
+   The <i>Plane</i> class provides access to the plane subsystem. It is derived from the Frame class. Let’s look at the public methods.<br>
+   <br>
+   <i>void Plane::create_plane(const unsigned long int width, const unsigned long int height, const unsigned long int surface_width, const
+    unsigned long int surface_height, unsigned short int *surface_buffer);</i> - Create the plane.<br>
+   <br>
+   <i>void Plane::transfer();</i> - Transfer an image from the plane to the virtual surface.<br>
+   <br>
+   <i>Plane* Plane::get_handle();</i> - Return the handle to the plane.<br>
+  </big>
+  <h2><a id="mozTocId697709" class="mozTocH2"></a><big>Chapter 3. The base graphics subsystem</big></h2>
+  <big><u>Introduce the base graphics subsystem.</u><br>
+   <br>
+   The base graphics subsystem does the rendering of the game scene. It works together with the virtual surface.<br>
+   <br>
+   <u>Work with the base graphics subsystem.</u><br>
+   <br>
+   The Screen class provides access to the base graphic subsystem. It is derived from the <i>Frame</i> class. Let’s look at the public methods.<br>
+   <br>
+   <i>void Screen::initialize();</i> - Initialize the subsystem.<br>
+   <br>
+   <i>void Screen::update();</i> - Show the current back buffer content on the screen.<br>
+   <br>
+   <i>const unsigned long int Screen::get_width() const;</i> - Return the screen width in pixels.<br>
+   <br>
+   <i>const unsigned long int Screen::get_height() const;</i> - Return the screen height in pixels.<br>
+   <br>
+   <i>Screen* Screen::get_handle();</i> - Return the handle to the base graphics subsystem object.<br>
+   <br>
+   <i>unsigned long int Screen::get_fps() const;</i> - Return the current FPS value.<br>
+   <br>
+   <i>unsigned long int Screen::get_color() const;</i> - Return the current color in bits per pixel.<br>
+  </big>
+  <h2><a id="mozTocId70925" class="mozTocH2"></a><big>Chapter 4. The graphic primitives</big></h2>
+  <big>Drawing a pixel is a funny action. But you need more. What about graphic primitives?<br>
+   The <i>Primitive</i> class can draw it. It is a simple class with a few methods.<br>
+   <br>
+   <i>void Primitive::initialize(Screen *Screen);</i> - Initialize the graphic primitive subsystem.<br>
+   <br>
+   <i>void Primitive::set_color(const unsigned char red, const unsigned char green, const unsigned char blue);</i> - Set the current color. It is black by default.<br>
+   <br>
+   <i>void Primitive::draw_line(const unsigned long int x1, const unsigned long int y1, const unsigned long int x2, const unsigned long int y2);</i> - Just draw a line.<br>
+   <br>
+   <i>void Primitive::draw_rectangle(const unsigned long int x, const unsigned long int y, const unsigned long int width, const unsigned long
+    int height);</i> - Draw a simple rectangle.<br>
+   <br>
+   <i>void Primitive::draw_filled_rectangle(const unsigned long int x, const unsigned long int y, const unsigned long int width);</i> - Draw a filled rectangle.<br>
+  </big>
+  <h2><a id="mozTocId237580" class="mozTocH2"></a><big>Chapter 5. The base image subsystem</big></h2>
+  <big><u>The very important subsystems.</u><br>
+   <br>
+   The base image subsystem is very important. All other image subsystems work over the base image subsystem.<br>
+   <br>
+   <u>The mirror type.</u><br>
+   <br>
+   The mirror type looks like a predefined constant. You can see it below.<br>
+   <br>
+  </big>
+  <table style="text-align: left; width: 387px; height: 94px;" cellspacing="2" cellpadding="2" border="1">
+   <tbody>
+    <tr>
+     <td style="vertical-align: top;"><big>Mirror type code </big></td>
+     <td style="vertical-align: top;"><big>Description </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>MIRROR_HORIZONTAL </big></td>
+     <td style="vertical-align: top;"><big>Horizontal mirror </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>MIRROR_VERTICAL </big></td>
+     <td style="vertical-align: top;"><big>Vertical mirror </big></td>
+    </tr>
+   </tbody>
+  </table>
+  <big><br>
+   <u>Work with the base image subsystem.</u><br>
+   <br>
+   The <i>Surface</i> class provides simple access to the base image subsystem. Don’t use it directly. Let’s look at the public methods.<br>
+   <br>
+   <i>void Surface::initialize(Screen *Screen);</i> - Initialize the subsystem.<br>
+   <br>
+   <i>IMG_Pixel *Surface::get_image();</i> - Return the handle to the image buffer.<br>
+   <br>
+   <i>void Surface::load_image(Image &amp;buffer);</i> - Load an image from a memory buffer. Replace the current image if it exists.<br>
+   <br>
+   <i>size_t Surface::get_length() const;</i> - Return the length of the image buffer in bytes.<br>
+   <br>
+   <i>unsigned long int Surface::get_image_width() const;</i> - Return the image width in pixels.<br>
+   <br>
+   <i>unsigned long int Surface::get_image_height() const;</i> - Return the image height in pixels.<br>
+   <br>
+   <i>void Surface::resize_image(const unsigned long int new_width, const unsigned long int new_height);</i> - Resize the current image.<br>
+   <br>
+   <i>void Surface::mirror_image(const MIRROR_TYPE kind);</i> - Mirror the current image.<br>
+   <br>
+   <i>void Surface::horizontal_mirror();</i> - Do horizontal image mirroring.<br>
+   <br>
+   <i>void Surface::vertical_mirror();</i> - Do vertical image mirroring.<br>
+  </big>
+  <h2><a id="mozTocId74732" class="mozTocH2"></a><big>Chapter 6. The animation subsystem</big></h2>
+  <big><u>The very important subsystem.</u><br>
+   <br>
+   The animation subsystem lets you control animation frames.<br>
+   <u><br>Work with the animation subsystem.</u><br>
+   <br>
+   The <i>Animation</i> class provides simple access to the animation subsystem. Don’t use it directly. Let’s look to the public methods.<br>
+   <br>
+   <i>void Animation::set_frames(const unsigned long int amount);</i> - Set the number of frames in a scrolling background or an animated sprite.<br>
+   <br>
+   <i>unsigned long int Animation::get_frames() const;</i> - Return the number of frames in a scrolling background or an animated sprite.<br>
+   <br>
+   <i>unsigned long int Animation::get_frame() const;</i> - Return the current frame in a scrolling background or an animated sprite.<br>
+  </big>
+  <h2><a id="mozTocId234538" class="mozTocH2"></a><big>Chapter 7. The ordinary background</big></h2>
+  <big><u>The decoration.</u><br>
+   <br>
+   The background is a big image. It's like a decoration on the theater
+   stage. Any game has a background. There are two kinds of backgrounds:
+   the normal background and the scrolling background. The scrolling
+   background is a big image with a few frames. The horizontally oriented
+   scrolling background is like a horizontally oriented photo ribbon. The
+   vertically oriented scrolling background is like a vertically oriented
+   photo ribbon.<br>
+   <br>
+   <u>The background types.</u><br>
+   <br>
+   The background type looks like a predefined constant. You can see it below.<br>
+   <br>
+  </big>
+  <table style="text-align: left; width: 562px; height: 124px;" cellspacing="2" cellpadding="2" border="1">
+   <tbody>
+    <tr>
+     <td style="vertical-align: top;"><big>Background type </big></td>
+     <td style="vertical-align: top;"><big>Description </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>NORMAL_BACKGROUND </big></td>
+     <td style="vertical-align: top;"><big>Normal background </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>HORIZONTAL_BACKGROUND </big></td>
+     <td style="vertical-align: top;"><big>Horizontal scrolling background </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>VERTICAL_BACKGROUND </big></td>
+     <td style="vertical-align: top;"><big>Vertical scrolling background </big></td>
+    </tr>
+   </tbody>
+  </table>
+  <big><br>
+  </big>
+  <big><u><br>Work with the background.</u><br>
+   <br>
+   Just use the <i>Background</i> class to work with the background. It is derived from the Surface and Animation classes. Let’s look at the public methods.<br>
+   <br>
+   <i>unsigned long int Background::get_width() const;</i> - Return the background width in pixels.<br>
+   <br>
+   <i>unsigned long int Background::get_height() const;</i> - Return the background height in pixels.<br>
+   <br>
+   <i>void Background::set_target(const unsigned long int target);</i> - Set the target frame in the scrolling background.<br>
+   <br>
+   <i>void Background::step();</i> - Increase the number of the target frame in the scrolling background. Set it to 1 if the number of the
+   target frame is more than the number of frames.<br>
+   <br>
+   <i>void Background::set_kind(const BACKGROUND_TYPE target);</i> - Set the background type.<br>
+   <br>
+   <i>void Background::set_setting(const BACKGROUND_TYPE kind, const unsigned long int frames);</i> - Set the background settings.<br>
+   <br>
+   <i>void Background::draw_background();</i> - Draw a background.<br>
+   <br>
+   <u>Important notes.</u><br>
+   <br>
+   Always call the <i>set_kind</i> method after loading the background image. Always call the set_frames method before calling the <i>set_kind</i> method if you want to use a scrolling background. Also, you can use the <i>set_setting</i> method instead of calling the set_kind method.<br>
+  </big>
+  <h2><a id="mozTocId106872" class="mozTocH2"></a><big>Chapter 8. The ordinary sprites</big></h2>
+  <big><u>A small, important thing.</u><br>
+   <br>
+   A sprite is a small transparent image. It's useful for many things: enemies, bonuses, etc.<br>
+   <br>
+   <u>The sprite types.</u><br>
+   <br>
+   There are two kinds of sprites: the normal sprites and the strips. The
+   strip is an animated sprite. Do you remember analog cameras? A strip
+   looks like a photo ribbon. The horizontal strip looks like the
+   horizontally oriented photo ribbon. The vertical strip looks like the
+   vertically oriented photo ribbon.<br>
+   The sprite type looks like a predefined constant. You can see it below.<br>
+   <br>
+  </big>
+  <table style="text-align: left; width: 388px; height: 124px;" cellspacing="2" cellpadding="2" border="1">
+   <tbody>
+    <tr>
+     <td style="vertical-align: top;"><big>Sprite type </big></td>
+     <td style="vertical-align: top;"><big>Description </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>SINGLE_SPRITE </big></td>
+     <td style="vertical-align: top;"><big>Normal sprite </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>HORIZONTAL_STRIP </big></td>
+     <td style="vertical-align: top;"><big>Horizontal strip </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>VERTICAL_STRIP </big></td>
+     <td style="vertical-align: top;"><big>Vertical strip </big></td>
+    </tr>
+   </tbody>
+  </table>
+  <big><br>
+   <u>Some words about the sprite transparency.</u><br>
+   <br>
+   Some pixels will be ignored. The ignored pixels have a transparent
+   color. How to determine it? The transparent color is the color of the
+   first pixel. The transparent mode is enabled by default.<br>
+   <u><br>Work with the sprites.</u><br>
+   <br>
+   Just use the Sprite class to work with a sprite. It is derived from the <i>Surface</i> and <i>Animation</i> classes. Let’s look at public methods.<br>
+   <br>
+   <i>void Sprite::load_sprite(Image &amp;buffer, const SPRITE_TYPE kind, const unsigned long int frames);</i> - Load a sprite from a memory buffer and set the sprite settings.<br>
+   <br>
+   <i>void Sprite::set_target(const unsigned long int target);</i> - Set the target frame in the animated sprite.<br>
+   <br>
+   <i>void Sprite::step();</i> - Increase the number of the target frame in the strip. Set it to 1 if the number of the target frame is more
+   than the number of frames.<br>
+   <br>
+   <i>void Sprite::set_kind(const SPRITE_TYPE target);</i> - Set the sprite type.<br>
+   <br>
+   <i>SPRITE_TYPE Sprite::get_kind() const;</i> - Get the sprite type.<br>
+   <br>
+   <i>void Sprite::set_transparent(const bool enabled);</i> - Enable or disable the transparent mode.<br>
+   <br>
+   <i>bool Sprite::get_transparent() const;</i> - Return true if the transparent mode is enabled.<br>
+   <br>
+   <i>void Sprite::set_x(const unsigned long int x);</i> - Set the x-coordinate of the sprite position.<br>
+   <br>
+   <i>void Sprite::set_y(const unsigned long int y);</i> - Set the y-coordinate of the sprite position.<br>
+   <br>
+   <i>void Sprite::increase_x();</i> - Increase the x-coordinate of the current sprite position.<br>
+   <br>
+   <i>void Sprite::decrease_x();</i> - Decrease the x-coordinate of the current sprite position.<br>
+   <br>
+   <i>void Sprite::increase_y();</i> - Increase the y-coordinate of the current sprite position.<br>
+   <br>
+   <i>void Sprite::decrease_y();</i> - Decrease the y-coordinate of the current sprite position.<br>
+   <br>
+   <i>void Sprite::increase_x(const unsigned long int increment);</i> - Increase the x-coordinate of the current sprite position with a user-defined increment.<br>
+   <br>
+   <i>void Sprite::decrease_x(const unsigned long int decrement);</i> - Decrease the x-coordinate of the current sprite position with a user-defined decrement.<br>
+   <br>
+   <i>void Sprite::increase_y(const unsigned long int increment);</i> - Increase the y-coordinate of the current sprite position with a user-defined increment.<br>
+   <br>
+   <i>void Sprite::decrease_y(const unsigned long int decrement);</i> - Decrease the y-coordinate of the current sprite position with a user-defined decrement.<br>
+   <br>
+   <i>unsigned long int Sprite::get_x() const;</i> - Return the x-position of the sprite.<br>
+   <br>
+   <i>unsigned long int Sprite::get_y() const;</i> - Return the y-position of the sprite.<br>
+   <br>
+   <i>unsigned long int Sprite::get_width() const;</i> - Return the width of the sprite.<br>
+   <br>
+   <i>unsigned long int Sprite::get_height() const;</i> - Return the height of the sprite.<br>
+   <br>
+   <i>Sprite* Sprite::get_handle();</i> - Return the handle to the sprite object.<br>
+   <br>
+   <i>Collision_Box Sprite::get_box() const;</i> - Return the collision-related information.<br>
+   <br>
+   <i>void Sprite::clone(Sprite *target);</i> - Create the copy of the existing sprite.<br>
+   <br>
+   <i>void Sprite::set_position(const unsigned long int x, const unsigned long int y);</i> - Set the sprite position.<br>
+   <br>
+   <i>void Sprite::draw_sprite();</i> - Draw a sprite.<br>
+   <br>
+   <i>void Sprite::draw_sprite(const unsigned long int x, const unsigned long int y);</i> - Set the sprite position and draw it.<br>
+   <br>
+   <i>void Sprite::draw_sprite(const bool transparency);</i> - Set the transparent mode and draw a sprite.<br>
+   <br>
+   <i>void Sprite::draw_sprite(const bool transparency, const unsigned long int x, const unsigned long int y);</i> - Set the transparent mode and draw a sprite at the target position.<br>
+   <br>
+   <u>Important notes.</u><br>
+   <br>
+   Always call the <i>set_kind</i> method after loading the sprite image. Always call the set_frames method before calling the <i>set_kind</i> method if you want to use an animated sprite. Also, you can use the <i>load_sprite</i> method instead of calling the <i>set_kind</i> method.<br>
+  </big>
+  <h2><a id="mozTocId934706" class="mozTocH2"></a><big>Chapter 9. Tileset</big></h2>
+  <big><u>Some words about the complex backgrounds.</u><br>
+   <br>
+   The tileset is a very useful thing for constructing complex
+   backgrounds. The tile is a small, nontransparent image. Each tile has a
+   fixed size. The tileset is a matrix of the tiles. Look to this picture
+   to understand it.<br>
+   <br>
+   <img alt="" src="tileset.png" height="249" width="380"><br>
+   <br>
+   <u>Rows and columns.</u><br>
+   <br>
+   The first row index is 0. The last row index is row amount - 1. The
+   first column index is 0. The last column index is column amount - 1.<br>
+   <br>
+   <u>Work with the tileset subsystem.</u><br>
+   <br>
+   The <i>Tileset</i> class provides access to the tileset subsystem. It is derived from the Surface class. Let’s look at public methods.<br>
+   <br>
+   <i>unsigned long int Tileset::get_tile_width() const;</i> - Return tile width in pixels.<br>
+   <br>
+   <i>unsigned long int Tileset::get_tile_height() const;</i> - Return tile height in pixels.<br>
+   <br>
+   <i>unsigned long int Tileset::get_rows() const;</i> - Return the number of rows.<br>
+   <br>
+   <i>unsigned long int Tileset::get_columns() const;</i> - Return the number of columns.<br>
+   <br>
+   <i>void Tileset::select_tile(const unsigned long int row, const unsigned long int column);</i> - Select the target tile.<br>
+   <br>
+   <i>void Tileset::draw_tile(const unsigned long int x, const unsigned long int y);</i> - Draw the selected tile at the specific position.<br>
+   <br>
+   <i>void Tileset::draw_tile(const unsigned long int row, const unsigned long int column, const unsigned long int x, const unsigned long int y);</i> - Draw the target tile at the specific position.<br>
+   <br>
+   <i>void Tileset::load_tileset(Image &amp;buffer, const unsigned long int row_amount, const unsigned long int column_amount);</i> - Load a tileset.<br>
+  </big>
+  <h2><a id="mozTocId786607" class="mozTocH2"></a><big>Chapter 10. Text</big></h2>
+  <big><u>How to print a text?</u><br>
+   <br>
+   Just use the text subsystem to print the text. This subsystem needs a
+   font for text printing. You must load a font before starting to print
+   the text. The font is just a horizontal strip with 128 frames.<br>
+   <br>
+   <u>The valid characters.</u><br>
+   <br>
+   You can use only standard ASCII characters to print the text.<br>
+   <br>
+   <u>Work with the text.</u><br>
+   <br>
+   The <i>Text</i> class provides a simple interface to the text subsystem. Let’s look at the public methods.<br>
+   <br>
+   <i>void Text::set_position(const unsigned long int x, const unsigned long int y);</i> - Set the output position.<br>
+   <br>
+   <i>void Text::load_font(Sprite *font);</i> - Load a font.<br>
+   <br>
+   <i>void Text::draw_character(const char target);</i> - Print a single character at the current position.<br>
+   <br>
+   <i>void Text::draw_text(const char *text);</i> - Print the text at the current position.<br>
+   <br>
+   <i>void Text::draw_character(const unsigned long int x, const unsigned long int y, const char target);</i> - Print a single character at the specific position.<br>
+   <br>
+   <i>void Text::draw_text(const unsigned long int x, const unsigned long int y, const char *text);</i> - Print the text at the specific position.<br>
+  </big>
+  <h2><a id="mozTocId473265" class="mozTocH2"></a><big>Chapter 11. Loading an image</big></h2>
+  <big><u>Load an image from a file.</u><br>
+   <br>
+   Use the image loader to load an image from a file. The Image class
+   provides simple access to the image loader. It is a very simple class
+   with a few methods.<br>
+   <br>
+   <i>void Image::load_tga(const char *name);</i> - Load a Truevision TGA image.<br>
+   <br>
+   <i>void Image::load_pcx(const char *name);</i> - Load a ZSoft PC Paintbrush image.<br>
+   <br>
+   <i>unsigned long int Image::get_width() const;</i> - Return the width of the current image.<br>
+   <br>
+   <i>unsigned long int Image::get_height() const;</i> - Return the height of the current image.<br>
+   <br>
+   <i>size_t Image::get_length() const;</i> - Return the length in bytes of the image buffer.<br>
+   <br>
+   <i>unsigned char *Image::get_data();</i> - Return the handle to the image buffer.<br>
+   <br>
+   <i>void Image::destroy_image();</i> - Destroy the current image and free the image buffer.<br>
+   <br>
+   <u>Important remark.</u><br>
+   <br>
+   The new image will replace the current image if the current image already exists.<br>
+   <br>
+   <u>Supported format.</u><br>
+   <br>
+   All loading images must have the correct specifications. You can see the list of supported formats below.<br>
+   <br>
+  </big>
+  <table style="text-align: left; width: 686px; height: 94px;" cellspacing="2" cellpadding="2" border="1">
+   <tbody>
+    <tr>
+     <td style="vertical-align: top;"><big>Format </big></td>
+     <td style="vertical-align: top;"><big>Color </big></td>
+     <td style="vertical-align: top;"><big>Compression </big></td>
+     <td style="vertical-align: top;"><big>Palette </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>Truevision TGA image </big></td>
+     <td style="vertical-align: top;"><big>24 bit </big></td>
+     <td style="vertical-align: top;"><big>None, RLE </big></td>
+     <td style="vertical-align: top;"><big>Not present </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>ZSoft PC Paintbrush </big></td>
+     <td style="vertical-align: top;"><big>24 bit </big></td>
+     <td style="vertical-align: top;"><big>RLE </big></td>
+     <td style="vertical-align: top;"><big>Not present </big></td>
+    </tr>
+   </tbody>
+  </table>
+  <big><u><br>Recommend software.</u><br>
+   <br>
+   You can use a wide range of graphics software to convert your images to the correct format. I recommend using <a href="https://www.gimp.org">GIMP</a> to do it. It is a powerful open-source and cross-platform image editor.<br>
+  </big>
+  <h1><a id="mozTocId928237" class="mozTocH1"></a><big>Part 4. The game-specific things</big></h1>
+  <h2><a id="mozTocId150502" class="mozTocH2"></a><big>Chapter 1. The collision detector</big></h2>
+  <big><u>The very important thing for any game.</u><br>
+   <br>
+   What is a very important thing for any video game? A collision.<br>
+   <br>
+   <u>The collision details.</u><br>
+   <br>
+   The collision detector uses the bounding box collision method to detect
+   a collision. The collision-related information is represented by a
+   special structure. Let me introduce it.<br>
+   <br>
+   <i>struct Collision_Box<br>
+    {<br>
+    unsigned long int x;<br>
+    unsigned long int y;<br>
+    unsigned long int width;<br>
+    unsigned long int height;<br>
+    };</i><br>
+   <br>
+   <u>Work with the collision detector.</u><br>
+   <br>
+   The <i>Collision</i> class provides easy access to the collision
+   detector. It is a very simple class with a few methods. Let’s look at
+   the public methods.<br>
+   <br>
+   <i>void Collision::set_target(const Box_Collision &amp;first_target, const Box_Collision &amp;second_target);</i> - Set the targets for the collision detector.<br>
+   <br>
+   <i>bool Collision::check_horizontal_collision() const;</i> - Return true if the horizontal collision between two objects is accepted.<br>
+   <br>
+   <i>bool Collision::check_vertical_collision() const;</i> - Return true if the vertical collision between two objects is accepted.<br>
+   <br>
+   <i>bool Collision::check_collision() const;</i> - Return true if the horizontal or vertical collision between two objects is accepted.<br>
+   <br>
+   <i>bool Collision::check_horizontal_collision(const Box_Collision &amp;first_target, const Box_Collision &amp;second_target);</i> - Set the collision target and check the horizontal collision.<br>
+   <br>
+   <i>bool Collision::check_vertical_collision(const Box_Collision &amp;first_target, const Box_Collision &amp;second_target);</i> - Set the collision target and check the vertical collision.<br>
+   <br>
+   <i>bool Collision::check_collision(const Box_Collision &amp;first_target, const Box_Collision &amp;second_target);</i> - Set the collision target and check the collision.<br>
+   <br>
+   <i>Collision_Box Collision::generate_box(const unsigned long int x, const unsigned long int y, const unsigned long int width, const
+    unsigned long int height) const;</i> - Generate the collision-related information from the object properties.<br>
+  </big>
+  <h2><a id="mozTocId495684" class="mozTocH2"></a><big>Chapter 2. Timer</big></h2>
+  <big>The timer is a very useful thing. Just use the <i>Timer</i> class to work with the timer. Let’s look at the public methods.<br>
+   <br>
+   <i>void Timer::set_timer(const double seconds);</i> - Set the timer interval and initialize the start point.<br>
+   <br>
+   <i>bool Timer::check_timer();</i> - Initialize stop point. Return true
+   and reinitialize the start point if the interval between the stop and
+   start points is larger than or equal to a specific number of seconds.<br>
+  </big>
+  <h1><a id="mozTocId906226" class="mozTocH1"></a><big>Part 5. The binary files</big></h1>
+  <h2><a id="mozTocId235389" class="mozTocH2"></a><big>Chapter 1. The base binary files subsystem</big></h2>
+  <big><u>Work with the binary file.</u><br>
+   <br>
+   The <i>Binary_File</i> class provides simple access to the base binary file subsystem. Don’t use it directly. Let’s look at public methods.<br>
+   <br>
+   <i>void Binary_File::close();</i> - Close the file.<br>
+   <br>
+   <i>void Binary_File::set_position(const long int offset);</i> - Set the file position.<br>
+   <br>
+   <i>long int Binary_File::get_position();</i> - Return the current file position.<br>
+   <br>
+   <i>long int Binary_File::get_length();</i> - Return the file length in bytes.<br>
+   <br>
+   <i>bool Binary_File::check_error();</i> - Return true if the last file operation failed.<br>
+   <u><br>Important notice.</u><br>
+   <br>
+   The target file size limit is 2 gigabytes.<br>
+  </big>
+  <h2><a id="mozTocId753527" class="mozTocH2"></a><big>Chapter 2. The file reader</big></h2>
+  <big>The file reader is intended for reading data from the binary files. The <i>Input_File</i> class provides access to the file reader. It is derived from the <i>Binary_File</i> class. Let’s look at the public methods.<br>
+   <br>
+   <i>void Input_File::open(const char *name);</i> - Open a file for reading.<br>
+   <br>
+   <i>void Input_File::read(void *buffer, const size_t length);</i> - Read data from the file.<br>
+  </big>
+  <h2><a id="mozTocId734420" class="mozTocH2"></a><big>Chapter 3. The file writer</big></h2>
+  <big>The file writer is intended for writing data to the binary files. The <i>Output_File</i> class provides access to the file reader. It is derived from the <i>Binary_File</i> class. Let’s look at the public methods.<br>
+   <br>
+   <i>void Output_File::open(const char *name);</i> - Open a file for writing.<br>
+   <br>
+   <i>void Output_File::create_temp();</i> - Create a temporary file. This file will be deleted when it is closed.<br>
+   <br>
+   <i>void Output_File::write(void *buffer, const size_t length);</i> - Write data to the file.<br>
+   <br>
+   <i>void Output_File::flush();</i> - Force writing the internal buffer data to the file.<br>
+  </big>
+  <h1><a id="mozTocId986637" class="mozTocH1"></a><big>Part 6. The other important things</big></h1>
+  <h2><a id="mozTocId991571" class="mozTocH2"></a><big>Chapter 1. Memory</big></h2>
+  <big>RAM is a very important resource. Just use the <i>Memory</i> class to get the total memory size and the free memory size. Let’s look at the public methods.<br>
+   <br>
+   <i>unsigned long int System::get_total_memory();</i> - Return the total memory size in bytes.<br>
+   <br>
+   <i>unsigned long int System::get_free_memory();</i> - Return the free memory size in bytes.<br>
+  </big>
+  <h2><a id="mozTocId982523" class="mozTocH2"></a><big>Chapter 2. The display backlight</big></h2>
+  <big><u>Control the display backlight.</u><br>
+   <br>
+   You can control the level of the display backlight via the backlight subsystem.<br>
+   <u><br>The backlight level.</u><br>
+   <br>
+   The minimal backlight level is 10. The maximum backlight level is 90. The increasing/decreasing step is 10.<br>
+   <u><br>Working with the backlight.</u><br>
+   <br>
+   Just use the <i>Backlight</i> class to work with the backlight. Let’s look at the public methods.<br>
+   <br>
+   <i>unsigned char Backlight::get_minimum() const;</i> - Return the minimum level of the display backlight.<br>
+   <br>
+   <i>unsigned char Backlight::get_maximum() const;</i> - Return the maximum level of the display backlight.<br>
+   <br>
+   <i>unsigned char Backlight::get_level();</i> - Return the current level of the display backlight.<br>
+   <br>
+   <i>void Backlight::increase_level();</i> - Increase the current level of the display backlight.<br>
+   <br>
+   <i>void Backlight::decrease_level();</i> - Decrease the current level of the display backlight.<br>
+   <br>
+   <i>void Backlight::turn_off();</i> - Turn off the display backlight.<br>
+   <br>
+   <i>void Backlight::turn_on();</i> - Turn on the display backlight.<br>
+   <br>
+   <i>void Backlight::set_light(const unsigned char level);</i> - Set the level of the display backlight.<br>
+  </big>
+  <h2><a id="mozTocId197692" class="mozTocH2"></a><big>Chapter 3. Abnormal program termination</big></h2>
+  <big>You can use the <i>Halt</i> function to terminate the program. This function is declared in the <i>RETROGDK</i> namespace.<br>
+   <br>
+   <i>void Halt(const char *message);</i> - Terminate the program. Write the error message to the log file if logging is enabled.<br>
+  </big>
+  <h2><a id="mozTocId965356" class="mozTocH2"></a><big>Chapter 4. Interaction with the operating system</big></h2>
+  <big>You may need interaction with the operating system. Just use the <i>System</i> class to do it. Let’s look at the public methods.<br>
+   <br>
+   <i>unsigned long int System::get_random(const unsigned long int number);</i> - Return a random number from zero to number - 1.<br>
+   <br>
+   <i>void System::quit();</i> - Exit from your program and return a user to the operating system.<br>
+   <br>
+   <i>void System::run(const char *command);</i> - Execute a shell command or an external program.<br>
+   <br>
+   <i>char* System::read_environment(const char *variable);</i> - Return the value of the specific environment variable.<br>
+   <br>
+   <i>void System::enable_logging(const char *name);</i> - Enable the error logging. The error messages will redirect to a log file.<br>
+  </big>
+  <h2><a id="mozTocId592544" class="mozTocH2"></a><big>Chapter 5. Filesystem</big></h2>
+  <big>The filesystem subsystem lets you do some file operations. The <i>Filesystem</i> class provides simple access to this subsystem. Let’s look at public methods.<br>
+   <br>
+   <i>bool Filesystem::file_exist(const char *name);</i> - Check the target file for existence.<br>
+   <br>
+   <i>bool Filesystem::delete_file(const char *name);</i> - Delete the target file.<br>
+   <br>
+   <u>Important remark.</u><br>
+   <br>
+   All methods return false if the operation failed.<br>
+  </big>
+  <h2><a id="mozTocId928685" class="mozTocH2"></a><big>Chapter 6. Input</big></h2>
+  <big><u>A few words about the built-in gamepad.</u><br>
+   <br>
+   Portable game consoles like the RS-97 have a built-in gamepad.<br>
+   <u><br>Working with the gamepad.</u><br>
+   <br>
+   Just use the <i>Gamepad</i> class to work with the built-in gamepad. Let’s look at the public methods.<br>
+   <br>
+   <i>void Gamepad::initialize();</i> - Initialize the gamepad subsystem.<br>
+   <br>
+   <i>void Gamepad::update();</i> - Update the button state. Always call this method before checking the button.<br>
+   <br>
+   <i>bool Gamepad::check_hold(const GAMEPAD_BUTTONS button);</i> - Return true if the target button is pressed or held.<br>
+   <br>
+   <i>bool Gamepad::check_press(const GAMEPAD_BUTTONS button);</i> - Return true if the target button is pressed.<br>
+   <br>
+   <i>bool Gamepad::check_released(const GAMEPAD_BUTTONS button);</i> - Return true if the target button is released.<br>
+   <br>
+   <u>The key codes.</u><br>
+   <br>
+   The gamepad keys bind to the key codes. These codes look like a predefined constant.<br>
+   <br>
+  </big>
+  <table style="text-align: left; width: 477px; height: 454px;" cellspacing="2" cellpadding="2" border="1">
+   <tbody>
+    <tr>
+     <td style="vertical-align: top;"><big>Key code </big></td>
+     <td style="vertical-align: top;"><big>Gamepad key </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_UP </big></td>
+     <td style="vertical-align: top;"><big>D-pad up </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_DOWN</big></td>
+     <td style="vertical-align: top;"><big>D-pad down </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_LEFT</big></td>
+     <td style="vertical-align: top;"><big>D-pad left </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_RIGHT</big></td>
+     <td style="vertical-align: top;"><big>D-pad right </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_A</big></td>
+     <td style="vertical-align: top;"><big>A </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_B</big></td>
+     <td style="vertical-align: top;"><big>B </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_X</big></td>
+     <td style="vertical-align: top;"><big>X </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_Y</big></td>
+     <td style="vertical-align: top;"><big>Y </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_C<br>
+      </big></td>
+     <td style="vertical-align: top;"><big>C<br>
+      </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_Z<br>
+      </big></td>
+     <td style="vertical-align: top;"><big>Z<br>
+      </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_L</big></td>
+     <td style="vertical-align: top;"><big>L </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_R</big></td>
+     <td style="vertical-align: top;"><big>R </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_START</big></td>
+     <td style="vertical-align: top;"><big>Start </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_SELECT</big></td>
+     <td style="vertical-align: top;"><big>Menu/Select </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_POWER</big></td>
+     <td style="vertical-align: top;"><big>Power </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>BUTTON_HOLD</big></td>
+     <td style="vertical-align: top;"><big>Hold </big></td>
+    </tr>
+   </tbody>
+  </table>
+  <big><br>
+  </big>
+  <h1><a id="mozTocId860328" class="mozTocH1"></a><big>Part 7. Sound</big></h1>
+  <h2><a id="mozTocId185441" class="mozTocH2"></a><big>Chapter 1. The low-level sound subsystem</big></h2>
+  <big><u>The sound device.</u><br>
+   <br>
+   The low-level sound subsystem provides simple access to the sound device.<br>
+   <u><br>Default sound format.</u><br>
+   <br>
+   You can see the specification of the default sound format below.<br>
+   <br>
+  </big>
+  <table style="text-align: left; width: 350px; height: 124px;" cellspacing="2" cellpadding="2" border="1">
+   <tbody>
+    <tr>
+     <td style="vertical-align: top;"><big>Data format </big></td>
+     <td style="vertical-align: top;"><big>Signed PCM </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>Bits per sample </big></td>
+     <td style="vertical-align: top;"><big>16 </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>Channels </big></td>
+     <td style="vertical-align: top;"><big>2 </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>Compression </big></td>
+     <td style="vertical-align: top;"><big>None </big></td>
+    </tr>
+   </tbody>
+  </table>
+  <big><u><br>
+    A data conversion.</u><br>
+   <br>
+   The low-level sound subsystem doesn’t support automatic conversion.
+   Your software must do source sound data conversion by itself.<br>
+   <br>
+   <u>Work with the low-level sound subsystem.</u><br>
+   <br>
+   Just use the <i>Sound</i> class to work with the low-level sound subsystem. Let’s look at public methods.<br>
+   <br>
+   <i>void Sound::initialize(const int rate);</i> - Initialize the subsystem.<br>
+   <br>
+   <i>bool Sound::check_busy();</i> - Return true if the sound device is busy.<br>
+   <br>
+   <i>size_t Sound::get_length() const;</i> - Return the sound buffer length in bytes.<br>
+   <br>
+   <i>size_t Sound::send(char *buffer, const size_t length);</i> - Send the audio data to the sound device and return the number of sent data bytes.<br>
+   <br>
+   <i>Sound* Sound::get_handle();</i> - Return the handle to the low-level sound subsystem object.<br>
+  </big>
+  <h2><a id="mozTocId716176" class="mozTocH2"></a><big>Chapter 2. Loading audio</big></h2>
+  <big><u>The audio loader.</u><br>
+   <br>
+   The audio loader lets you load the audio data from the <a href="https://en.wikipedia.org/wiki/Wave_Sound">Waveform Audio File Format</a> file.<br>
+   <u><br>The audio blocks.</u><br>
+   <br>
+   The audio data is the array of audio blocks. The duration of the single
+   audio block is 1 second. You can calculate the length of the block in a
+   simple way: (rate*channels*bits)/8.<br>
+   <br>
+   <u>Recommend software.</u><br>
+   <br>
+   You can use a wide range of sound software to convert your audio to the correct format. I recommend using <a href="https://www.audacityteam.org">Audacity</a> or <a href="https://www.freac.org">fre:ac</a> to do it.<br>
+   <u><br>Load audio from the file.</u><br>
+   <br>
+   The <i>Audio</i> class provides simple access to the audio loader. Let’s look at the public methods.<br>
+   <br>
+   <i>Audio* Audio::get_handle();</i> - Return the handle to the audio loader subsystem.<br>
+   <br>
+   <i>size_t Audio::get_total() const;</i> - Return the total length of audio data in bytes.<br>
+   <br>
+   <i>size_t Audio::get_block() const;</i> - Return the length of the audio block in bytes.<br>
+   <br>
+   <i>unsigned long int Audio::get_rate() const;</i> - Return the sound rate.<br>
+   <br>
+   <i>unsigned short int Audio::get_channels() const;</i> - Return the number of audio channels.<br>
+   <br>
+   <i>unsigned short int Audio::get_bits() const;</i> - Return the number of bits per sample.<br>
+   <br>
+   <i>void Audio::go_start();</i> - Go to the start of the audio data.<br>
+   <br>
+   <i>void Audio::read_data(char *buffer, const size_t length);</i> - Read audio data.<br>
+   <br>
+   <i>void Audio::load_wave(const char *name);</i> - Load audio from the file.<br>
+  </big>
+  <h2><a id="mozTocId941328" class="mozTocH2"></a><big>Chapter 3. Playing audio</big></h2>
+  <big><u>The audio player.</u><br>
+   <br>
+   How to play audio? Just the audio player to do it.<br>
+   <u><br>Work with the audio player.</u><br>
+   <br>
+   Just use the <i>Player</i> class to work with the audio player. Let’s look at public methods.<br>
+   <br>
+   <i>void Player::initialize(Sound *target);</i> - Initialize the subsystem.<br>
+   <br>
+   <i>void Player::load(Audio *audio);</i> - Load audio.<br>
+   <br>
+   <i>void Player::play();</i> - Play the current audio block and increase the playing position.<br>
+   <br>
+   <i>void Player::loop();</i> - Play the current audio block and increase the playing position. Jump to the start if you don't have an available
+   audio block anymore.<br>
+   <br>
+   <i>bool Player::is_end() const;</i> - Return true if you don't have an available audio block anymore.<br>
+   <br>
+   <i>void Player::rewind_audio();</i> - Set the playing position to the start.<br>
+  </big>
+  <h2><a id="mozTocId594237" class="mozTocH2"></a><big>Chapter 4. Mixer</big></h2>
+  <big><u>The mixer.</u><br>
+   <br>
+   The mixer lets you control the level of the sound volume.<br>
+   <br>
+   <u>The volume level.</u><br>
+   <br>
+   The minimal sound volume level is 15. The maximum sound volume level is 255.<br>
+   <u><br>Work with the mixer.</u><br>
+   <br>
+   Just use the <i>Mixer</i> class to work with the mixer subsystem. Let’s look at public methods.<br>
+   <br>
+   <i>void Mixer::initialize();</i> - Initialize the subsystem.<br>
+   <br>
+   <i>void Mixer::set_volume(const int volume);</i> - Set the level of the sound volume.<br>
+   <i><br>
+    void Mixer::turn_on();</i> - Turn on sound.<br>
+   <br>
+   <i>void Mixer::turn_off();</i> - Turn off sound.<br>
+   <br>
+   <i>int Mixer::get_maximum() const;</i> - Return the maximum level of the sound volume.<br>
+   <br>
+   <i>int Mixer::get_minimum() const;</i> - Return the minimum level of the sound volume.<br>
+   <br>
+   <i>int Mixer::get_volume() const;</i> - Return the current level of the sound volume.<br>
+  </big>
+  <h1><a id="mozTocId993140" class="mozTocH1"></a><big>Part 8. The internal details of the library subsystems</big></h1>
+  <h2><a id="mozTocId459922" class="mozTocH2"></a><big>Chapter 1. A few words for curious programmers</big></h2>
+  <big><br>
+   The library subsystems have a different internal structure. It's hidden
+   from you, and you don’t have access to it. Do you want to know about
+   the hidden things? Just read the next chapter.<br>
+  </big>
+  <h2><a id="mozTocId442950" class="mozTocH2"></a><big>Chapter 2. The internal classes</big></h2>
+  <big>Some classes are designed for internal use only. Don’t touch them. What are these strange classes doing?<br>
+   <br>
+   <i>FPS</i> implements the FPS counter.<br>
+   <i>Render</i> implements the frame buffer render.<br>
+  </big>
+  <h2><a id="mozTocId910300" class="mozTocH2"></a><big>Chapter 3. The low-level sound subsystem</big></h2>
+  <big>The low-level sound subsystem works over the <a href="http://www.opensound.com">Open Sound System</a>. It is a standard sound subsystem in RetroFW.<br>
+  </big>
+  <h2><a id="mozTocId891074" class="mozTocH2"></a><big>Chapter 4. The base graphics subsystem</big></h2>
+  <big>The base graphics subsystem works over the frame buffer. The base
+   graphics subsystem actively uses the back buffer. The back buffer is
+   just an array of pixels. The pixel is represented in B5G6R5 format: 5
+   bits for the blue component, 6 bits for the green component, and 5 bits
+   for the red component. A single pixel is represented by the unsigned
+   two-byte value. The shadow buffer is an array of pixels too.<br>
+  </big>
+  <h2><a id="mozTocId402185" class="mozTocH2"></a><big>Chapter 5. The input subsystem</big></h2>
+  <big><u>The two state arrays.</u><br>
+   <br>
+   The button states are stored in the two state arrays: the current state
+   array and an old state array. A state array is just an array of bytes.<br>
+   <u><br>The button state.</u><br>
+   <br>
+   The button state looks like a predefined constant.<br>
+   <br>
+  </big>
+  <table style="text-align: left; width: 425px; height: 94px;" cellspacing="2" cellpadding="2" border="1">
+   <tbody>
+    <tr>
+     <td style="vertical-align: top;"><big>State code </big></td>
+     <td style="vertical-align: top;"><big>Description </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>GAMEPAD_RELEASE </big></td>
+     <td style="vertical-align: top;"><big>Button is released </big></td>
+    </tr>
+    <tr>
+     <td style="vertical-align: top;"><big>GAMEPAD_PRESS </big></td>
+     <td style="vertical-align: top;"><big>Button is pressed </big></td>
+    </tr>
+   </tbody>
+  </table>
+  <big><br>
+  </big>
+  <h2><a id="mozTocId672321" class="mozTocH2"></a><big>Chapter 6. The base image subsystem</big></h2>
+  <big>The base image subsystem actively uses the internal image buffer.
+   This buffer is very simple. It is just an array of pixels. The special
+   structure contains a single pixel. Let’s look at this structure.<br>
+   <br>
+   <i>struct IMG_Pixel<br>
+    {<br>
+    unsigned char blue:8;<br>
+    unsigned char green:8;<br>
+    unsigned char red:8;<br>
+    };</i><br>
+   <br>
+  </big>
+  <h1><a id="mozTocId415691" class="mozTocH1"></a><big>Changelog</big></h1>
+  <big>
+  0.1: Initial version.<br>
+  0.2: The game pad support has improved.<br>
+  0.2.1: The Makefile has been updated.<br>
+  0.2.2-0.2.3: The small changes.<br>
+  0.2.4: The source code synced with the Neon Game Development Kit 5.0.5.<br>
+  0.2.5: The source code synced with the Neon Game Development Kit 5.0.9.<br>
+  0.2.6: The source code synced with the Neon Game Development Kit 5.1.<br>
+  0.2.7: The source code synced with the Neon Game Development Kit 5.1.1.<br>
+  0.2.8: The source code synced with the Neon Game Development Kit 5.1.2.<br>
+  0.2.9: The source code synced with the Neon Game Development Kit 5.1.4.<br>
+  0.3: The source code synced with the Neon Game Development Kit 5.1.5.<br>
+  0.3.1: The source code synced with the Neon Game Development Kit 5.1.7.<br>
+  0.3.2: The source code synced with the Neon Game Development Kit 5.1.8.<br>
+  0.3.3: The source code synced with the Neon Game Development Kit 5.2.3.<br>
+  0.3.4: The source code synced with the Neon Game Development Kit 5.2.5.<br>
+  0.3.5: The source code synced with the Neon Game Development Kit 5.2.6.<br>
+  0.3.6: The source code synced with the Neon Game Development Kit 5.2.7.<br>
+  0.3.7: The source code synced with the Neon Game Development Kit 5.2.8.<br>
+  0.3.8: The source code synced with the Neon Game Development Kit 5.2.9.<br>
+  0.3.9: The source code synced with the Neon Game Development Kit 5.3.<br>
+  0.4: The source code synced with the Neon Game Development Kit 5.3.2.<br>
+  0.4.1: The source code synced with the Neon Game Development Kit 5.3.3.<br>
+  0.4.2: The source code synced with the Neon Game Development Kit 5.3.4.<br>
+  0.4.3: The source code synced with the Neon Game Development Kit 5.3.5.<br>
+  0.4.4: The source code synced with the Neon Game Development Kit 5.3.6.<br>
+  0.4.5: The source code synced with the Neon Game Development Kit 5.3.7.<br>
+  0.4.6: The source code synced with the Neon Game Development Kit 5.3.8.<br>
+  0.4.7: The source code synced with the Neon Game Development Kit 5.3.9.<br>
+  0.4.8: The source code synced with the Neon Game Development Kit 5.4.<br>
+  0.4.9: The source code synced with the Neon Game Development Kit 5.4.1.<br>
+  0.5: The source code synced with the Neon Game Development Kit 5.4.2.<br>
+  0.5.1: The source code synced with the Neon Game Development Kit 5.4.3.<br>
+  0.5.2: The source code synced with the Neon Game Development Kit 5.4.4.<br>
+  0.5.3: The source code synced with the Dingux Game Development Kit 5.1.5.<br>
+  0.5.3.1: The documentation has been updated.<br>
+ </big>
+</body>
+</html>

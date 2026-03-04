@@ -1,10 +1,10 @@
 Quick help
 
-D-pad - Move.
-A - Do horizontal mirror the ship.
-B - Do vertical mirror the ship.
-X - Increase display back-light level.
-Y - Decrease display back-light level.
-R - Turn off display back-light.
-L - Turn on display back-light.
-Start - Exit from demo.
+D-pad: Move.
+A: Do horizontally mirror the ship.
+B: Do vertically mirror the ship.
+X: Increase the display backlight level.
+Y: Decrease the display backlight level.
+R: Turn off the display backlight.
+L: Turn on the display backlight.
+Start: Exit from the demo.
